@@ -14,8 +14,6 @@ Laravel sail has been used in the application.
 
 ## How to run the project?
 
-<hr>
-
 ### Setting Up
 
 <h4>1. Please install the dependencies by following command:</h4>
