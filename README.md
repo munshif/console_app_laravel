@@ -2,15 +2,13 @@
 
 ## About the Project
 
-Flash Card CLI Application with Laravel & Artisan. 
-
-Laravel sail has been used in the application.
+Flash Card CLI Application with Laravel & Artisan. This application has been developed using laravel sail.
 
 ## Requirements
  * PHP 8.1 with composer
  * Docker - Docker needs to be installed, up and running.
 
-<hr>
+<hr><br/>
 
 ## How to run the project?
 
@@ -29,26 +27,28 @@ Laravel sail has been used in the application.
 <code>./vendor/bin/sail artisan migrate</code>
 
 <h4>6. Run database seeder to create the test users:</h4>
-<code>./vendor/bin/sail artisan db:seed</code>
+<code>./vendor/bin/sail artisan db:seed</code><br/><br/>
 
 **Note: Create a copy of .env.example to and rename .env**
 
-<hr>
+<hr><br/>
 
 ## Start The CLI Application
-###Step 01
-<code>./vendor/bin/sail artisan flashcard:interactive</code>
 
-###Step 02
- **Need to enter test user's email id**
+Step 01 - Run the applicaton.
+
+<code>./vendor/bin/sail artisan flashcard:interactive</code>
+<br />
+
+Step 02 - Enter test user's email id
 
 <code>munshif@test.com</code> - This is a test user, which has been created from seeder.
 
-<hr>
+<hr><br/>
 
-##Scenario
+## Scenario
 
-###Task Description
+### Task Description
 <p>We want an interactive CLI program for Flashcard practice. For context: a flashcard is a spaced repetition tool for memorising questions and their respective answers.
 The command `php artisan flashcard:interactive` should present a main menu with the following actions:</p>
 
@@ -58,7 +58,7 @@ The user will be prompted to give a flashcard question and the only answer to th
 ### 2 . List all flashcards
 A table listing all the created flashcard questions with the correct answer.
 
-###3 . Practice
+### 3 . Practice
 * This is where a user will practice the flashcards that have been added.
 * First, show the current progress:The user will be presented with a table listing all questions, and their practice status for each question: <b>Not answered, Correct, Incorrect.</b>
 * As a table footer, we want to present the % of completion (all questions vs correctly answered).
@@ -66,16 +66,16 @@ A table listing all the created flashcard questions with the correct answer.
 * Upon answering, store the answer in the DB and print correct/incorrect.
 * Finally, show the first step again (the current progress) and allow the user to keep practicing until they explicitly decide to stop.
 
-###4 . Stats
+### 4 . Stats
 Display the following stats:
 - The total amount of questions.
 - % of questions that have an answer.
 - % of questions that have a correct answer.
 
-###5 . Reset
+### 5 . Reset
 
 This command should erase all practice progress and allow a fresh start.
 
-###6 . Exit
+### 6 . Exit
   This option will conclude the interactive command.
   Note: The program should only exit by choosing the `Exit` option on the main menu (or killing the process)
