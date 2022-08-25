@@ -1,64 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About the Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Flash Card CLI Application with Laravel & Artisan. Laravel sail has been used in the application.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
+ * PHP 8.1 with composer
+ * Docker - Docker needs to be installed, up and running.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<hr>
 
-## Learning Laravel
+## How to run the project?
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<hr>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Setting Up
 
-## Laravel Sponsors
+<h4>1. Please install the dependencies by following command:</h4>
+<code>composer install</code>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<h4>2. To start the instance:</h4>
+<code>./vendor/bin/sail up -d </code>
 
-### Premium Partners
+<h4>3. To stop the instance:</h4>
+<code>./vendor/bin/sail down </code>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<h4>5. Need to run the database migration to create the necessary tables in the database:</h4>
+<code>./vendor/bin/sail artisan migrate</code>
 
-## Contributing
+<h4>6. Run database seeder to create the test users:</h4>
+<code>./vendor/bin/sail artisan db:seed</code>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Note: Create a copy of .env.example to and rename .env**
 
-## Code of Conduct
+<hr>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Start The CLI Application
+###Step 01
+<code>./vendor/bin/sail artisan flashcard:interactive</code>
 
-## Security Vulnerabilities
+###Step 02
+ **Need to enter test user's email id**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<code>munshif@test.com</code> - This is a test user, which has been created from seeder.
 
-## License
+<hr>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##Scenario
+
+###Task Description
+<p>We want an interactive CLI program for Flashcard practice. For context: a flashcard is a spaced repetition tool for memorising questions and their respective answers.
+The command `php artisan flashcard:interactive` should present a main menu with the following actions:</p>
+
+### 1 . Create a flashcard
+The user will be prompted to give a flashcard question and the only answer to that question. The question and the answer should be stored in the database.
+
+### 2 . List all flashcards
+A table listing all the created flashcard questions with the correct answer.
+
+###3 . Practice
+* This is where a user will practice the flashcards that have been added.
+* First, show the current progress:The user will be presented with a table listing all questions, and their practice status for each question: <b>Not answered, Correct, Incorrect.</b>
+* As a table footer, we want to present the % of completion (all questions vs correctly answered).
+* Then, the user will pick the question they want to practice.We should not allow answering questions that are already correct.
+* Upon answering, store the answer in the DB and print correct/incorrect.
+* Finally, show the first step again (the current progress) and allow the user to keep practicing until they explicitly decide to stop.
+
+###4 . Stats
+Display the following stats:
+- The total amount of questions.
+- % of questions that have an answer.
+- % of questions that have a correct answer.
+
+###5 . Reset
+
+This command should erase all practice progress and allow a fresh start.
+
+###6 . Exit
+  This option will conclude the interactive command.
+  Note: The program should only exit by choosing the `Exit` option on the main menu (or killing the process)
