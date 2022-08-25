@@ -2,7 +2,9 @@
 
 ## About the Project
 
-Flash Card CLI Application with Laravel & Artisan. Laravel sail has been used in the application.
+Flash Card CLI Application with Laravel & Artisan. 
+
+Laravel sail has been used in the application.
 
 ## Requirements
  * PHP 8.1 with composer
